@@ -3,37 +3,23 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import categoryService from "./service.js";
 import cacheTTL from "../cache/constants.js";
-import Tournament from "./tournamentSchema.js";
+// import Tournament from "./tournamentSchema.js";
 
 const getAllTournamentsByCategory = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log("________________", id)
-
+    console.log("id...", id)
     const key = cacheService.getCacheKey(req);
 
     let data = cacheService.getCache(key);
+    console.log("data", data)
 
     if (!data) {
-      // Check if data exists in the database
-      const tournamentEntry = await Tournament.findOne({ categoryId: id });
+      data = await categoryService.getAllTournamentsByCategory(id);
 
-      if (tournamentEntry) {
-        data = tournamentEntry.tournaments;
-      } else {
-        // Fetch data from the service
-        data = await categoryService.getAllTournamentsByCategory(id);
-
-        // Store the fetched data in the database
-        const newTournamentEntry = new Tournament({ categoryId: id, tournaments: data });
-        await newTournamentEntry.save();
-      }
-
-      // Cache the data
       cacheService.setCache(key, data, cacheTTL.ONE_DAY);
     }
-
-    // console.log("data", data);
+    console.log("data1", data)
 
     return apiResponse({
       res,
@@ -43,6 +29,7 @@ const getAllTournamentsByCategory = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
+    console.log("calling...", error)
     next(error);
   }
 };

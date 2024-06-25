@@ -29,7 +29,6 @@ app.use(
 );
 
 app.use("/api/auth", route.authRoute);
-
 app.use("/api/v1/sport", route.sportRoute);
 app.use("/api/v1/category", route.categoryRoute);
 app.use("/api/v1/unique-tournament", route.uniqueTournamentRoute);
