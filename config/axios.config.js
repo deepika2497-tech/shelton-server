@@ -15,6 +15,8 @@ if ((config.sofascore.apiMode = "free")) {
   };
 }
 
+console.log("headers", headers)
+
 const axiosInstance = axios.create({
   baseURL: apiUrl,
   headers: headers,
