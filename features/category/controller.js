@@ -16,7 +16,6 @@ const getAllTournamentsByCategory = async (req, res, next) => {
 
     if (!data) {
       data = await categoryService.getAllTournamentsByCategory(id);
-
       cacheService.setCache(key, data, cacheTTL.ONE_DAY);
     }
     console.log("data1", data)
@@ -29,7 +28,19 @@ const getAllTournamentsByCategory = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    console.log("calling...", error)
+    console.log("calling...", error);
+
+    // Additional logging for debugging
+    if (error.response) {
+      console.log("Response data:", error.response.data);
+      console.log("Response status:", error.response.status);
+      console.log("Response headers:", error.response.headers);
+    } else if (error.request) {
+      console.log("Request data:", error.request);
+    } else {
+      console.log("Error message:", error.message);
+    }
+
     next(error);
   }
 };
