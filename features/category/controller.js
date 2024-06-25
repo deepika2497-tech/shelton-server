@@ -3,53 +3,38 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import categoryService from "./service.js";
 import cacheTTL from "../cache/constants.js";
-import axiosInstance from "../../config/axios.config.js";
-// import Tournament from "./tournamentSchema.js";
+import Tournament from "./tournamentSchema.js";
 
 const getAllTournamentsByCategory = async (req, res, next) => {
   try {
     const { id } = req.params;
-    // console.log("id...", id)
-    // const key = cacheService.getCacheKey(req);
 
-    // let data = cacheService.getCache(key);
-    // console.log("data", data)
+    const key = cacheService.getCacheKey(req);
 
-    // if (!data) {
-    //   data = await categoryService.getAllTournamentsByCategory(id);
-    //   cacheService.setCache(key, data, cacheTTL.ONE_DAY);
-    // }
-    // console.log("data1", data)
+    let data = cacheService.getCache(key);
 
-    const { data } = await axiosInstance.get(
-      `/api/v1/category/${id}/unique-tournaments`
-    );
+    if (!data) {
+      const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      data = await categoryService.getAllTournamentsByCategory(id, headers);
 
-    const responseBody = data.groups?.[0]?.uniqueTournaments ?? [];
-    // console.log("responseBody", responseBody)
-    // return responseBody;
+      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+    }
+
+    const tournamentEntry = new Tournament({ data });
+    await tournamentEntry.save();
+
 
     return apiResponse({
       res,
-      data: responseBody,
+      data: data,
       status: true,
       message: "unique tournament by category fetched successfully",
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    console.log("calling...", error);
-
-    // Additional logging for debugging
-    // if (error.response) {
-    //   console.log("Response data:", error.response.data);
-    //   console.log("Response status:", error.response.status);
-    //   console.log("Response headers:", error.response.headers);
-    // } else if (error.request) {
-    //   console.log("Request data:", error.request);
-    // } else {
-    //   console.log("Error message:", error.message);
-    // }
-
     next(error);
   }
 };
