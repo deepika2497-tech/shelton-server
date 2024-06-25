@@ -1,9 +1,15 @@
+import axiosInstance from "../../config/axios.config.js";
 import axios from 'axios';
 
 const getAllTournamentsByCategory = async (id, headers) => {
+  // const { data } = await axiosInstance.get(
+  //   `/api/v1/category/${id}/unique-tournaments`
+  // );
+  // return data.groups?.[0]?.uniqueTournaments ?? [];
+
   const url = `https://www.sofascore.com/api/v1/category/${id}/unique-tournaments`;
   const response = await axios.get(url, { headers });
-  console.log("response", response)
+  console.log("response", response);
   return response.data;
 };
 
