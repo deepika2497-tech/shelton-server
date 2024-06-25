@@ -8,24 +8,28 @@ import Tournament from "./tournamentSchema.js";
 const getAllTournamentsByCategory = async (req, res, next) => {
   try {
     const { id } = req.params;
+    console.log("id...", id);
 
     const key = cacheService.getCacheKey(req);
 
     let data = cacheService.getCache(key);
+    console.log("data from cache", data);
 
     if (!data) {
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       };
+      console.log("Request headers:", headers);
+
       data = await categoryService.getAllTournamentsByCategory(id, headers);
+      console.log("data from service", data);
 
       cacheService.setCache(key, data, cacheTTL.ONE_DAY);
     }
 
     const tournamentEntry = new Tournament({ data });
     await tournamentEntry.save();
-
 
     return apiResponse({
       res,
@@ -35,6 +39,18 @@ const getAllTournamentsByCategory = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
+    console.log("Error occurred:", error);
+
+    if (error.response) {
+      console.log("Response data:", error.response.data);
+      console.log("Response status:", error.response.status);
+      console.log("Response headers:", error.response.headers);
+    } else if (error.request) {
+      console.log("Request data:", error.request);
+    } else {
+      console.log("Error message:", error.message);
+    }
+
     next(error);
   }
 };
