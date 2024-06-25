@@ -30,10 +30,10 @@ app.use(
 
 app.use("/api/auth", route.authRoute);
 app.use("/api/v1/sport", route.sportRoute);
-app.use("/api/v1/category", route.categoryRoute);
 app.use("/api/v1/unique-tournament", route.uniqueTournamentRoute);
 app.use("/api/v1/team", route.teamRoute);
 app.use("/api/v1/setting", route.settingRoute);
+app.use("/api/v1/category", route.categoryRoute);
 
 app.use(errorHandler);
 

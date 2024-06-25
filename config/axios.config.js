@@ -6,10 +6,6 @@ let headers = {};
 
 if ((config.sofascore.apiMode = "free")) {
   apiUrl = config.sofascore.freeUrl;
-  headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  };
 } else {
   apiUrl = config.sofascore.paidUrl;
 
