@@ -6,29 +6,38 @@ import cacheTTL from "../cache/constants.js";
 
 const getCategories = async (req, res, next) => {
   try {
-    // const { sport } = req.params;
+    const { sport } = req.params;
 
-    // const key = cacheService.getCacheKey(req);
+    const key = cacheService.getCacheKey(req);
 
-    // let data = cacheService.getCache(key);
+    let data = cacheService.getCache(key);
 
-    // if (!data) {
-    //   data = await sportService.getCategories(sport);
+    if (!data) {
+      data = await sportService.getCategories(sport);
 
-    //   cacheService.setCache(key, data, cacheTTL.ONE_DAY);
-    // }
+      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+    }
 
     return apiResponse({
       res,
-      data: [{"name": "test"}],
+      data: data,
       status: true,
       message: "Tournament leagues fetched successfully",
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
+    if (error.response && error.response.status === 403) {
+      return apiResponse({
+        res,
+        status: false,
+        message: "Forbidden: You don't have permission to access this resource.",
+        statusCode: StatusCodes.FORBIDDEN,
+      });
+    }
     next(error);
   }
 };
+
 const getDailyEventCount = async (req, res, next) => {
   try {
     const { timezoneOffset } = req.params;
