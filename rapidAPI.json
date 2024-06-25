@@ -1,0 +1,1369 @@
+{
+  "data": {
+    "subscriber": {
+      "id": "4094921",
+      "type": "User",
+      "subscription": [
+        {
+          "id": 7501442,
+          "userId": 4094921,
+          "type": "API",
+          "status": "ACTIVE",
+          "additionalSubscriptionData": {
+            "latestInvoiceId": null,
+            "__typename": "AdditionalSubscriptionProviderData"
+          },
+          "billingPlanVersion": {
+            "type": "BillingPlanVersion",
+            "__typename": "BillingPlanVersion",
+            "id": "billingplanversion_e7a4abeb-9c38-4827-b23c-49f9a515b861",
+            "name": "1b2db6b1-0655-42f8-9105-8d1b2d10952e",
+            "period": "MONTHLY",
+            "option": null,
+            "price": 0,
+            "current": true,
+            "localePrice": {
+              "price": null,
+              "symbol": null,
+              "__typename": "LocalePrice"
+            },
+            "pricing": "FREE",
+            "billinglimits": [
+              {
+                "id": "billinglimit_aa657a55-b05b-4554-a505-3c4046361d0b",
+                "period": "MONTHLY",
+                "amount": 50,
+                "unlimited": false,
+                "overageprice": 0,
+                "overageLocalePrice": {
+                  "price": null,
+                  "symbol": null,
+                  "__typename": "OverageLocalePrice"
+                },
+                "billingitem": {
+                  "id": "billingitem_ba60b571-1e47-42c2-9e54-008aed3ccb7b",
+                  "name": "Requests",
+                  "title": null,
+                  "description": null,
+                  "type": "billingitem",
+                  "allEndpoints": true,
+                  "billingItemEndpoints": [
+                    {
+                      "id": "billingitemendpoint_ed95c424-3bf0-4af5-9584-910f7d0a2f82",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_9979fb40-7e0e-47c2-a29f-a7fe1d166d90",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_cuptrees",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/cuptrees",
+                        "description": "Returns list of cuptrees for unique tournament and season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_1c72b83b-beac-4475-a703-66fdf47aed3e",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_5d87a4e2-0f1a-47c9-ba54-60d3cb2eb8ea",
+                        "method": "GET",
+                        "name": "api_v1_player_uniquetournamentseasonteams",
+                        "route": "/api/v1/player/{id}/unique-tournament-season-teams",
+                        "description": "Returns unique tournaments, seasons and teams in which player has played.\nAn example: `331737`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7d8a13c9-b8da-4b17-b97e-d7538de6f829",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d435c759-2ba1-40ec-92ff-3b9525bc70f0",
+                        "method": "GET",
+                        "name": "api_v1_event_statistics",
+                        "route": "/api/v1/event/{id}/statistics",
+                        "description": "Team statistics for teams participating in event.\nExample ids divided per sport:\n\n - football: `7828036`\n - basketball: `7932054`\n - ice-hockey: `7863311`\n - handball: `7892350`\n - baseball: `8029999`\n - american-football: `8094790`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_fe302957-7001-404b-a1a4-21aa6df58a9a",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d8dfc461-911d-4502-bf6a-8b3e4b710e24",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_7",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/slug/{roundSlug}/prefix/{roundPrefix}/{span}/0",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3b06555d-b00f-4907-9eb0-fb993203b9a7",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_eec32bef-0f63-443b-8807-592d4a06eeda",
+                        "method": "GET",
+                        "name": "api_v1_player_events_3",
+                        "route": "/api/v1/player/{id}/unique-tournament/{uniqueTournamentId}/team/{teamId}/events/{span}/{page}",
+                        "description": "Returns events in which player played or was on the bench. In addition to events, multiple maps are returned where keys\nare event ids and values can be:\n - `playedForTeamMap`: player's team id in the event (eventId -> teamId)\n```\n         {\n             \"8285996\" : 3002,\n             \"8559883\" : 3002,\n                 .\n                 .\n                 .\n         }\n```\n - `statisticsMap`: player's statistics, rating for example (eventId -> statistics)\n```\n         {\n             \"8285996\" : {\n                 \"rating\": 6.5\n             },\n             \"8559883\" : {\n                 \"rating\": 7.3\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `incidentsMap`: number of goals, own goals, assists and cards (eventId -> incidentsStats)\n```\n        {\n             \"8285996\" : {\n                 \"assists\": 1,\n                 \"yellowCards\": 1\n             },\n             \"8559883\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n             \"8391610\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `onBenchMap`: true if player stayed on the bench (eventId -> bool)\n```\n         {\n             \"8285996\" : true\n         }\n```\n\nParameter span indicates whether future start dates are wanted or past start dates.\n\nAn example: `136710`\n\n\nCache refresh for route by unique tournament\n\nCache refresh for route by team\n\nCache refresh for route by unique tournament and team",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_4525afde-c69f-4a15-9ca0-686310b7babc",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_0758a351-6104-4a66-ac9e-81121e66d9fc",
+                        "method": "GET",
+                        "name": "api_v1_player_media",
+                        "route": "/api/v1/player/{id}/media",
+                        "description": "Returns media for a player.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_98ee878c-2d7e-4c07-9f69-42781072a9c8",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_46100b7b-8cec-4853-a12e-4588aa7555a3",
+                        "method": "GET",
+                        "name": "api_v1_player_penaltyhistory_1",
+                        "route": "/api/v1/player/{player}/penalty-history/unique-tournament/{uniqueTournament}/season/{season}",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_08f79b8e-0e13-4690-8d5a-f1471a5149b1",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_1489f20c-116a-45ec-8ab1-0477d0081c58",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_tournamentseasonteams",
+                        "route": "/api/v1/unique-tournament/{id}/tournament/{tournamentId}/season/{seasonId}/teams",
+                        "description": "Get teams that have played in given unique tournament, tournament and season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d69b3b8f-912c-473d-91db-5425ec087035",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_dca6c0c2-e71c-47fa-a4db-5a7a4194a6f3",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasonrounds",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/rounds",
+                        "description": "Get unique tournament rounds for specified season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_545c1d17-77eb-481e-963a-0fd0a115a45e",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_6278883e-9251-4840-afdc-355d05ff3bd9",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasonteams",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/teams",
+                        "description": "Get teams that have played in given unique tournament and season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_c8618a9d-9aff-4bbb-9407-8d94945235d9",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_8fa6d58a-9634-4d4d-bba3-f2b910205a24",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_structuredcuptrees",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/cuptrees/structured",
+                        "description": "Returns specially structured cup tree data.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_07c0be43-c3c1-440c-a83e-4abcd974553b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_096e21f3-4686-4ce0-a343-2b7ae61eda6a",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_mmaevents_1",
+                        "route": "/api/v1/unique-tournament/{id}/tournament/{tournamentId}/mma-events/{type}",
+                        "description": "Gets MMA events for a UniqueTournament (organization)",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_1e0736f9-809b-4f8c-842c-fedd4ffa6781",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_54d48b7f-e0e4-4654-840b-c04389142e5b",
+                        "method": "GET",
+                        "name": "api_v1_team_racesforseason",
+                        "route": "/api/v1/team/{id}/stage-season/{seasonId}/races",
+                        "description": "Return races in which driver participates for given stage season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_dbd7a2a9-873d-49b9-9781-a8c45834a9c7",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f17a9415-7a17-461e-836a-514a64ac9d91",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_topteams",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/top-teams/{type}",
+                        "description": "Get top teams for given unique tournament, season and type",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_960db42b-3398-4d2a-8131-5f6ec8f63cc1",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_74435c93-aefa-4c70-8b9d-2dd9b565ab02",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasonevents_1",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/{span}/{page}",
+                        "description": "Get events for uniqueTournament, season and team optionally.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7a7890a6-af7d-47bc-b861-3772663b12ee",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_0801c899-f042-4d08-8299-9a9b8a6f3300",
+                        "method": "GET",
+                        "name": "api_v1_search_players",
+                        "route": "/api/v1/search/players/{query}/{more}",
+                        "description": "Returns an array of players for given `query`. Maximum number of returned items is `10`\nif the `more` parameter is an empty string. If `more` is anything else the maximum number of\nreturned items is `100`.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3ff09756-210a-4f98-9879-3ceb79e45a5b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_9bbc0c29-7960-42a1-9b6c-6cb385699df0",
+                        "method": "GET",
+                        "name": "api_v1_player_events_2",
+                        "route": "/api/v1/player/{id}/team/{teamId}/events/{span}/{page}",
+                        "description": "Returns events in which player played or was on the bench. In addition to events, multiple maps are returned where keys\nare event ids and values can be:\n - `playedForTeamMap`: player's team id in the event (eventId -> teamId)\n```\n         {\n             \"8285996\" : 3002,\n             \"8559883\" : 3002,\n                 .\n                 .\n                 .\n         }\n```\n - `statisticsMap`: player's statistics, rating for example (eventId -> statistics)\n```\n         {\n             \"8285996\" : {\n                 \"rating\": 6.5\n             },\n             \"8559883\" : {\n                 \"rating\": 7.3\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `incidentsMap`: number of goals, own goals, assists and cards (eventId -> incidentsStats)\n```\n        {\n             \"8285996\" : {\n                 \"assists\": 1,\n                 \"yellowCards\": 1\n             },\n             \"8559883\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n             \"8391610\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `onBenchMap`: true if player stayed on the bench (eventId -> bool)\n```\n         {\n             \"8285996\" : true\n         }\n```\n\nParameter span indicates whether future start dates are wanted or past start dates.\n\nAn example: `136710`\n\n\nCache refresh for route by unique tournament\n\nCache refresh for route by team\n\nCache refresh for route by unique tournament and team",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_55da1574-e5c1-47aa-b48d-a1d61a24df45",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_9814eb68-1d85-4b9f-9766-84cf253aa364",
+                        "method": "GET",
+                        "name": "api_v1_player_statisticsseasons",
+                        "route": "/api/v1/player/{id}/statistics/seasons",
+                        "description": "Get uniqueTournament-season pairs if statistics exist for given player.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_737db268-6062-4440-8134-6c446fd79366",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_bb60cc90-7868-4c6f-b258-d3eaf6b6df64",
+                        "method": "GET",
+                        "name": "api_v1_player_seasonshotactions",
+                        "route": "/api/v1/player/{id}/unique-tournament/{uniqueTournamentId}/season/{seasonId}/shot-actions/{type}",
+                        "description": "Get all shot actions by a player for given unique tournament, season and type.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_32d1dddc-0b80-4b69-96fb-8cc23783cf31",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_db0b1ee1-e487-4e6a-be79-23d466baae19",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasoninfo",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/info",
+                        "description": "Returns unique tournament information by season, an example unique tournament `17` and season `23776`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7e0fbec6-783d-48a8-8f70-23224267aa66",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_90bb6730-423c-4c4e-9657-6f3d68a211b6",
+                        "method": "GET",
+                        "name": "api_v1_event_head2head",
+                        "route": "/api/v1/event/{id}/h2h",
+                        "description": "Get head to head data for event.\n\nTo see return values go to sandbox tab and enter this id:\n\n- id: 8109124",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_62317fe8-e835-42e1-8042-2655260d9e89",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_5af3b22d-811f-4f21-b053-c46351dff2eb",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasonevents_2",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/team/{teamId}/events/{span}/{page}",
+                        "description": "Get events for uniqueTournament, season and team optionally.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3bf745e7-3fd8-4863-80d0-0f7a273479a2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_127c5ed9-99f2-4cd9-8958-fc127bcc2327",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_teamoftheweekplayers",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/team-of-the-week/{roundId}",
+                        "description": "Get team of the week players for given team of the week round",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_43d85ec4-a560-44a9-b7a5-19f3b676afd1",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_18ca469b-2a9f-4346-baf2-4ad5de77304f",
+                        "method": "GET",
+                        "name": "api_v1_player_events_1",
+                        "route": "/api/v1/player/{id}/unique-tournament/{uniqueTournamentId}/events/{span}/{page}",
+                        "description": "Returns events in which player played or was on the bench. In addition to events, multiple maps are returned where keys\nare event ids and values can be:\n - `playedForTeamMap`: player's team id in the event (eventId -> teamId)\n```\n         {\n             \"8285996\" : 3002,\n             \"8559883\" : 3002,\n                 .\n                 .\n                 .\n         }\n```\n - `statisticsMap`: player's statistics, rating for example (eventId -> statistics)\n```\n         {\n             \"8285996\" : {\n                 \"rating\": 6.5\n             },\n             \"8559883\" : {\n                 \"rating\": 7.3\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `incidentsMap`: number of goals, own goals, assists and cards (eventId -> incidentsStats)\n```\n        {\n             \"8285996\" : {\n                 \"assists\": 1,\n                 \"yellowCards\": 1\n             },\n             \"8559883\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n             \"8391610\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `onBenchMap`: true if player stayed on the bench (eventId -> bool)\n```\n         {\n             \"8285996\" : true\n         }\n```\n\nParameter span indicates whether future start dates are wanted or past start dates.\n\nAn example: `136710`\n\n\nCache refresh for route by unique tournament\n\nCache refresh for route by team\n\nCache refresh for route by unique tournament and team",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_0a649985-5739-46ba-bf7e-994ba9fb84f6",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_96020c7d-419d-40dd-aa2f-cd2601e74f1a",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_6",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/slug/{roundSlug}/prefix/{roundPrefix}",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_a6bcc398-4b97-46f0-b976-696c4a7796e7",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_b1ab83db-b7e5-4073-a756-d65b69e12583",
+                        "method": "GET",
+                        "name": "api_v1_team_media",
+                        "route": "/api/v1/team/{id}/media",
+                        "description": "Returns media and highlights of an team.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_5b876538-264d-4ffa-a048-7021c797a5dc",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_2e37df2f-86a1-45e1-8c08-9552e1432844",
+                        "method": "GET",
+                        "name": "api_v1_uniquestage_image",
+                        "route": "/api/v1/unique-stage/{id}/image",
+                        "description": "Returns the image of a uniqueStage. The image is in png format.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_da69053d-e854-4da9-a19f-631789001872",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d7b89a37-5c90-482c-86ac-993aace5f895",
+                        "method": "GET",
+                        "name": "api_v1_player_seasonheatmap",
+                        "route": "/api/v1/player/{id}/unique-tournament/{uniqueTournamentId}/season/{seasonId}/heatmap/{type}",
+                        "description": "Get player's season heat map.\n\nPoints are objects in format:\n```\n{\n     \"x\" : 4,\n     \"y\" : 12.5,\n     \"count\": 2\n}\n```\n\nAn example:\n- id: `7635`\n- uniqueTournamentId: `8`\n- seasonId: `18020`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_88e7d5d2-4076-47af-9d59-2db49bb038eb",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f6270eda-1025-43a6-a568-e31c7ca8c873",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasonevents",
+                        "route": "/api/v1/unique-tournament/{id}/events/{span}/{page}",
+                        "description": "Get events for uniqueTournament, season and team optionally.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7fb1f259-97aa-44fb-a603-1fedbdb3f507",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_1dabd09f-5cf8-4b7d-be68-8a1a56276f5d",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_4",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/prefix/{roundPrefix}",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_db90d0ad-7a34-42bf-9d9a-04a008b0cf23",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d71e3aa9-7951-4c3d-9343-5c5b2e83f403",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasongroups",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/groups",
+                        "description": "Get unique tournament groups for specified season. A tournament group consists of a tournament id and\nthe group name.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_9f261389-92f7-4f29-a84d-3ee99747c428",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d6412550-2aae-4bc7-a596-aa85a7012a66",
+                        "method": "GET",
+                        "name": "api_v1_team_seasonheatmap",
+                        "route": "/api/v1/team/{id}/unique-tournament/{uniqueTournamentId}/season/{seasonId}/heatmap/{type}",
+                        "description": "Get team's season heat map.\n\nPoints are objects in format:\n```\n{\n     \"x\" : 4,\n     \"y\" : 12.5,\n     \"count\": 2\n}\n```\n\nAn example:\n- id: `2829`\n- uniqueTournamentId: `8`\n- seasonId: `18020`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_8d583f24-8442-4b6e-a883-dfa3352cdea2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_269075c3-0a59-4e6d-b74f-d4072d15509a",
+                        "method": "GET",
+                        "name": "api_v1_event_teamstreaks",
+                        "route": "/api/v1/event/{id}/team-streaks",
+                        "description": "Get team streaks data for event.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_1c9da034-a637-4f5d-9d76-cab7b9980ad2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_19ea9f3f-7239-4f92-b997-e1ad612b684f",
+                        "method": "GET",
+                        "name": "api_v1_player_nearevents",
+                        "route": "/api/v1/player/{id}/near-events",
+                        "description": "An example: `331737`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_338e4b22-17ac-45d4-99fe-269f818217ca",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_5d1e72b5-e4cd-47ed-9607-f20f5709bbad",
+                        "method": "GET",
+                        "name": "api_v1_uniquestage_seasons",
+                        "route": "/api/v1/unique-stage/{id}/seasons",
+                        "description": "Returns season stages for given UniqueStage.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_f939e7df-25d2-41df-a0ba-500d538fbdc6",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_def61441-0c36-4589-ab82-56f8a80c5035",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_media",
+                        "route": "/api/v1/unique-tournament/{id}/media",
+                        "description": "Returns highlights and media of an unique tournament. An example: `17`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_49486275-7a7c-4d5a-b0ea-f8cbcc5a42f0",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_57dbc863-adba-487a-9148-2b59d9925891",
+                        "method": "GET",
+                        "name": "api_v1_event_eventplayershotmap",
+                        "route": "/api/v1/event/{id}/player/{playerId}/shotmap",
+                        "description": "Exmaple: event: `7171268`, player: `817214`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_da11ad30-63f2-4184-8b4e-5437aab86583",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_e952d372-2c87-48a5-bab7-8d56f4a1d679",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasons",
+                        "route": "/api/v1/unique-tournament/{id}/seasons",
+                        "description": "Returns seasons of a unique tournament, an example `17`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_78cfd52d-6143-44e6-a853-5b09b752248b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_a5b32ebf-372d-432e-b661-d605ff923a9c",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_e9f453cf-4ba4-476f-89b0-45da81c949e5",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_9e7a6532-3993-4498-9399-2ee6b8062aa2",
+                        "method": "GET",
+                        "name": "api_v1_team_transfers",
+                        "route": "/api/v1/team/{id}/transfers",
+                        "description": "Returns list of team transfers\nAn example: `38`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_0ea48af4-c7c6-411c-9e1d-c43eab230d71",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_c6f98d93-ffc6-4d07-b0db-2c859438d875",
+                        "method": "GET",
+                        "name": "api_v1_team_imagesmall",
+                        "route": "/api/v1/team/{id}/image/small",
+                        "description": "Returns the small image of a team. The image is in png format.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_baa9f220-0f66-4922-b49b-f3f2e47e82a8",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_1c56620f-2352-4dba-9708-329115e6133e",
+                        "method": "GET",
+                        "name": "api_v1_player_events",
+                        "route": "/api/v1/player/{id}/events/{span}/{page}",
+                        "description": "Returns events in which player played or was on the bench. In addition to events, multiple maps are returned where keys\nare event ids and values can be:\n - `playedForTeamMap`: player's team id in the event (eventId -> teamId)\n```\n         {\n             \"8285996\" : 3002,\n             \"8559883\" : 3002,\n                 .\n                 .\n                 .\n         }\n```\n - `statisticsMap`: player's statistics, rating for example (eventId -> statistics)\n```\n         {\n             \"8285996\" : {\n                 \"rating\": 6.5\n             },\n             \"8559883\" : {\n                 \"rating\": 7.3\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `incidentsMap`: number of goals, own goals, assists and cards (eventId -> incidentsStats)\n```\n        {\n             \"8285996\" : {\n                 \"assists\": 1,\n                 \"yellowCards\": 1\n             },\n             \"8559883\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n             \"8391610\" : {\n                 \"goals\": 1\n                 \"penaltyGoals\": 1\n             },\n                 .\n                 .\n                 .\n         }\n```\n - `onBenchMap`: true if player stayed on the bench (eventId -> bool)\n```\n         {\n             \"8285996\" : true\n         }\n```\n\nParameter span indicates whether future start dates are wanted or past start dates.\n\nAn example: `136710`\n\n\nCache refresh for route by unique tournament\n\nCache refresh for route by team\n\nCache refresh for route by unique tournament and team",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_62be25b3-6fb4-4c4f-8864-defddce96f76",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_066dca9a-3ac7-421d-ba8c-64f1f8c10613",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_2",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/slug/{roundSlug}",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_458457a9-873f-44b5-b7ef-c14d6c50839d",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_62cc158f-58b9-4805-bb24-05686c9c0262",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_teampositiongraph",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/team/{teamId}/team-performance-graph-data",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_a896947c-04ed-421e-ab3c-dfd726c7e4fb",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_61935b90-a25d-4980-9e00-ab951ca33a22",
+                        "method": "GET",
+                        "name": "api_v1_sport_tournamentsbysportanddate",
+                        "route": "/api/v1/sport/{sport}/active-tournaments",
+                        "description": "Tournaments (for given sport) that have events played on given date.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_286891fa-cf0e-4e59-9481-0a644d4fdfbf",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_54cc0709-90b1-43c7-8d9b-5441d461bb6a",
+                        "method": "GET",
+                        "name": "api_v1_event_playerstatistics",
+                        "route": "/api/v1/event/{id}/player/{playerId}/statistics",
+                        "description": "All player statistics in the event to be shown in event player statistics dialog.\nExample ids divided per sport:\n\n - football - event: `7828036`, player: `27583`\n - basketball - event: `7932054`, player: `816997`\n - ice-hockey - event: `7863311`, player: `134378`\n - handball - event: `7892350`, player: `926364`\n - baseball - event: `8029999`, player: `960721`\n - american-football - event: `7694871`, player: `853680`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d43b13d4-6198-42f5-b981-7a2f038a21e1",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_61825793-8766-4eaa-8c76-d447f24b2296",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_teamevents",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/team-events/{type}",
+                        "description": "Last 5 events for each team for specified season and type (total, home, away).",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3cecf794-fe9f-4a9c-b700-9f49161aa4b2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_d0847721-8a93-4e1e-995d-af9a5d0e0981",
+                        "method": "GET",
+                        "name": "api_v1_team_driverhistory",
+                        "route": "/api/v1/team/{id}/driver-career-history",
+                        "description": "Get career history stats for driver.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_6489c173-570d-480e-89f6-e5d49f50984c",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_03e34ea8-c0a8-4729-a350-265c7ac79ba2",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_powerrankings",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/power-rankings/round/{roundId}",
+                        "description": "Returns power rankings rows for specific round",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_08dc536e-46ae-4bb4-a01a-b8a9df6771dd",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_a5b4a61b-70b7-4352-a872-f52f40773670",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_mmaevents",
+                        "route": "/api/v1/unique-tournament/{id}/mma-events/{type}/{span}/{page}",
+                        "description": "Gets MMA events for a UniqueTournament (organization)",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_6a64b0a8-d0c9-4df4-ad63-d8bca21b58e2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_2b71cfdb-9a63-48d7-b245-8f6360a05d01",
+                        "method": "GET",
+                        "name": "api_v1_search_managers",
+                        "route": "/api/v1/search/managers/{query}/{more}",
+                        "description": "Returns an array of managers for given `query`. Maximum number of returned items is `10`\nif the `more` parameter is an empty string. If `more` is anything else the maximum number of\nreturned items is `100`.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7ba71d1d-fe38-443a-b879-258ef1909288",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_aa3a0559-a13f-402e-90d1-505aa0753a18",
+                        "method": "GET",
+                        "name": "api_v1_team_standingsseasons",
+                        "route": "/api/v1/team/{id}/standings/seasons",
+                        "description": "Get tournament-season pairs if standings exist for given team.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_4ffcace2-cac8-4344-94e7-f08e481b1de1",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_96f44e69-1085-4d67-afca-ad204444f3ec",
+                        "method": "GET",
+                        "name": "api_v1_event_jersey",
+                        "route": "/api/v1/event/{id}/jersey/{team}/{type}",
+                        "description": "Get team jersey picture in png format.\n\nTo see return values go to sandbox tab and enter this id:\n\n - event: 8085951\n - team: home\n - type: player",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_63c9c869-d7b5-4151-a95d-11646b157070",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_4c25380b-803a-42cf-9b0d-cd6e09a9815d",
+                        "method": "GET",
+                        "name": "api_v1_event_pregameform",
+                        "route": "/api/v1/event/{id}/pregame-form",
+                        "description": "Get pregame form for teams participating in event.\n\nTo see return values go to sandbox tab and enter this id:\n\n- event: 7828244",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_2fc46402-a180-4afc-8cf7-300ab77e2790",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f5441124-7ff3-4aba-b0c3-d90c8884a296",
+                        "method": "GET",
+                        "name": "api_v1_team_uniquetournaments",
+                        "route": "/api/v1/team/{id}/unique-tournaments",
+                        "description": "Returns unique tournaments in which team is participating\nAn example: `38`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_0e6f1428-eeff-402f-95d9-e262f73c27ea",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_7049d196-35f8-40a4-a98a-fd742549526c",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_mmaevents_2",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/mma-events/{type}",
+                        "description": "Gets MMA events for a UniqueTournament (organization)",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_362f3aa0-568d-4498-9d6b-1d0e3ad2a878",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_5fb1e3a0-f327-4f1a-ac56-552fc27c9069",
+                        "method": "GET",
+                        "name": "api_v1_player_lastratings",
+                        "route": "/api/v1/player/{id}/unique-tournament/{uniqueTournamentId}/season/{season}/last-ratings",
+                        "description": "To see return values go to sandbox tab and enter:\n- id: 750\n- uniqueTournamentId: 7\n- seasonId: 17351",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_f3877645-245a-4025-ba1d-681a778cf97c",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_3f059a92-0f78-4cc2-96e5-c2fe5da48db1",
+                        "method": "GET",
+                        "name": "api_v1_team_goaldistributions",
+                        "route": "/api/v1/team/{id}/unique-tournament/{uniqueTournamentId}/season/{seasonId}/goal-distributions",
+                        "description": "Get team goal distributions (home, away, overall) for given unique tournament and season",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_bfc4faa2-807d-40ab-8e5a-2b48b71fc892",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_9f190d9c-ffa2-4b04-9e25-fd5de56e0f14",
+                        "method": "GET",
+                        "name": "api_v1_team_stageseasons",
+                        "route": "/api/v1/team/{id}/stage-seasons",
+                        "description": "Get a list of stage seasons that the team participates in.\nAn example: `7135`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_5494f1a0-faa3-417f-87be-7c3596afbaf3",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_3d40f969-9eda-435b-8bef-cd3b22f37c88",
+                        "method": "GET",
+                        "name": "api_v1_event_incidents",
+                        "route": "/api/v1/event/{id}/incidents",
+                        "description": "See https://youtrack.sofascore.com/issue/BD-882 for info not provided here.\n\nIncidents are differentiated by two properties: incidentType and incidentClass. Class is a sub-differentiator for incidents of the same type.\n\nE.g. incident with type 'goal' can have the following classes by sport:\n\ngeneric: regular, penalty, ownGoal\n\nbasketball, rugby: onePoint, twoPoints, threePoints\n\nrugby: try, penaltyTry\n\namerican-football: touchdown, extraPoint, twoPointConversion, defTwoPointConversion, fieldGoal, fourPointFieldGoal, safety, rouge\n\naussie-rules: behind, goal\n\nResponse is an object with property `incidents` which is a list of objects that can be any of those listed in response schema.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_8c4361ab-7080-4908-9587-c2780dbdd250",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_ab33c241-5100-4fe0-84e8-6976e17b9ee0",
+                        "method": "GET",
+                        "name": "api_v1_event_share",
+                        "route": "/api/v1/event/{id}/share-image/{ratio}",
+                        "description": "Shows:\n- club logo\n- event start date",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d5b9f3ab-a42b-4032-ba6b-00ec9fa0b784",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_151e6405-b5a8-4ee9-85aa-322646eb1f23",
+                        "method": "GET",
+                        "name": "api_v1_team_players",
+                        "route": "/api/v1/team/{id}/players",
+                        "description": "Returns players who play for given team. Also, returns two sublists: national and foreign players.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_1706f887-57a1-4275-aeb6-16b2041e687f",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f3cee47b-659c-4b30-b26a-c2676977a34f",
+                        "method": "GET",
+                        "name": "api_v1_event_pointbypoint",
+                        "route": "/api/v1/event/{id}/point-by-point",
+                        "description": "Get tennis event point by point incidents.\n\n- event: 8077039",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d2e9d899-9a69-4d64-9d79-039d7b8d6606",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_4f599dbd-ee09-4d2a-8b87-929056d41594",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_topplayers",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/top-players/{type}/{positionDetailed}",
+                        "description": "Get top players for given unique tournament, season and type",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3c38d2d3-6cc2-474d-888c-958a77dbd73c",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_8da830ba-d297-4a38-a118-6ed5b30858b0",
+                        "method": "GET",
+                        "name": "api_v1_esportsgame_rounds",
+                        "route": "/api/v1/esports-game/{id}/rounds",
+                        "description": "Get list of rounds for specific esports game",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_007d73a5-b5b9-4cfe-bece-fbb5766a9981",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_51117344-24f1-4369-9162-1eda596c3c04",
+                        "method": "GET",
+                        "name": "api_v1_event_innings",
+                        "route": "/api/v1/event/{id}/innings",
+                        "description": "Unlike other routes, this one prioritises showing playerName instead of player.name.\nThe reason is that playerName may contain additional information related to the inning, such as (W).\n\n To see return values go to sandbox tab and enter this id:\n\n - event: 8357205",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_6ef95576-550c-488f-8a72-362563146460",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_01481359-a553-44cd-b3bb-92f5e23a291f",
+                        "method": "GET",
+                        "name": "api_v1_event_lineups",
+                        "route": "/api/v1/event/{id}/lineups",
+                        "description": "Lineups and box score statistics for all players participating in the event.\nExample ids divided per sport:\n\n - football: `7828036`\n - basketball: `7932054`\n - ice-hockey: `7863311`\n - handball: `7892350`\n - baseball: `8029999`\n - american-football: `8094790`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_3d857716-d8df-4fd6-a220-52e3e35dc2cc",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_760b6e2f-5c32-455a-b8fb-249628bc9870",
+                        "method": "GET",
+                        "name": "api_v1_team_image",
+                        "route": "/api/v1/team/{id}/image",
+                        "description": "Returns the image of a team. The image is in png format.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_733b7da4-25ca-427a-82e0-5fd43ccb39af",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_058e6547-5b15-4d0a-b308-7ab00dbe01d9",
+                        "method": "GET",
+                        "name": "api_v1_team_topplayers",
+                        "route": "/api/v1/team/{id}/unique-tournament/{uniqueTournamentId}/season/{seasonId}/top-players/{type}",
+                        "description": "Get top players for given unique tournament, season and type",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_839d1ad1-0a11-49cf-bd28-592361eca281",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_3f4b9f3a-41c5-44cf-8f9d-fb6a0ba6a466",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_standings",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/standings/{type}",
+                        "description": "Get unique tournament standings for specified season and type (total, home, away).",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_7af4c096-2d3d-415d-bf6e-307ad9e14bf2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_89c19ecc-4a90-4867-9a55-c5f1d2c65a41",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_teamoftheweekrounds",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/team-of-the-week/rounds",
+                        "description": "Get team of the week rounds in given unique tournament that are present in given season",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_5deb60b1-d7a1-4256-a32f-090285b8ef7b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_b9c513d2-3b84-42ab-8342-ce5e3d915fa3",
+                        "method": "GET",
+                        "name": "api_v1_search_uniquetournamentswithcuptree",
+                        "route": "/api/v1/search/unique-tournaments-with-cuptree/{query}",
+                        "description": "Returns an array of unique tournaments for given `query`. Query length must be at least 2 characters.\nMaximum number of returned items is `10`.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_c76370c5-fad9-443d-96cd-b9f0249e523b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_20e3e877-a99c-483c-9f89-7675ce0d05e8",
+                        "method": "GET",
+                        "name": "api_v1_event_shotmapperplayer",
+                        "route": "/api/v1/event/{event}/shotmap/player/{player}",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d650b449-fdbe-40ee-84f7-0bba8acdec80",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_54da2bf1-1e9b-4261-ab51-eefe163f381a",
+                        "method": "GET",
+                        "name": "api_v1_event_comments",
+                        "route": "/api/v1/event/{id}/comments",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_aad5028b-44c9-4cb4-a9e4-566a1baa54bd",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_46309a70-8f84-41a5-b83c-f89113c65c05",
+                        "method": "GET",
+                        "name": "api_v1_event_managers",
+                        "route": "/api/v1/event/{id}/managers",
+                        "description": "Get event managers. If manager id is known then {home|away}Manager is serialized, otherwise {home|away}ManagerName is serialized.\n\n- event: 7541937\n- event: 6664415\n- event: 6967336\n- event: 7514484",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_2e339889-99ff-47c6-9c04-2b95cb5a66f8",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_2a24c77d-6cc4-492a-aef4-5ba343458c1a",
+                        "method": "GET",
+                        "name": "api_v1_player_image",
+                        "route": "/api/v1/player/{id}/image",
+                        "description": "Returns the image of a player. The image is in png format.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_dc7692b7-9585-4d62-9e0e-a84ea9734191",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_051e8d00-ed92-4dd5-9865-2e85e30dceb2",
+                        "method": "GET",
+                        "name": "api_v1_esportsgame_bans",
+                        "route": "/api/v1/esports-game/{id}/bans",
+                        "description": "List of characters that team forbid for other team to choose. Order chronologically, separated by team.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_43525694-d8dd-4884-b09c-13ac4f320708",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_1499c3cb-aa7c-4545-8d6c-488b91c4527b",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_5",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/prefix/{roundPrefix}/{span}/0",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_07057fe1-44d8-4b7e-9f22-3de1d12a24ad",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f04bda03-e919-42a7-8f87-aee1a85d3374",
+                        "method": "GET",
+                        "name": "api_v1_tournament_teamevents",
+                        "route": "/api/v1/tournament/{id}/season/{seasonId}/team-events/{type}",
+                        "description": "Last 5 events for each team for specified season and type (total, home, away).",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_062fe717-134e-40d1-bc09-68010d4832dc",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_585d4918-dfb6-4a89-818a-069e82ff9e61",
+                        "method": "GET",
+                        "name": "api_v1_event_featuredodds",
+                        "route": "/api/v1/event/{id}/odds/{providerId}/featured",
+                        "description": "Get featured odds for event/provider.\nResponse `featured` is a `HashMap<string,BettingOdds>`, where every key is a value from `CountryOddsProvider.featuredOddsType`.\nYou need to lookup the key for the provider you selected. Eg. if `featuredOddsType` was `default`, you need to use\n`featured.default` value as your `BettingOdds`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_4c0081e9-aaae-42bd-81cf-1a71d660a21f",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_73c18554-0abe-405d-b00c-9566ec5b78b8",
+                        "method": "GET",
+                        "name": "api_v1_team_rankings",
+                        "route": "/api/v1/team/{id}/rankings",
+                        "description": "Legacy endpoint; Returns an array of TeamRanking (or its subclasses) entities for a particular team.\nFor subclass types, consult Rankings section, rankings for type action.\nUse [new route](#tag/Rankings/operation/get_app_api_v1_rankings_teamrankings) instead",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_d52e2bda-3aef-46e2-87e2-dd69c3d539a9",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_6f6f3428-b948-4e8a-a82f-8a4ebd6fc220",
+                        "method": "GET",
+                        "name": "api_v1_event_tweets",
+                        "route": "/api/v1/event/{id}/tweets",
+                        "description": "Property `user` is an object which constains properties `name`, `profile_image_url_https`, `screen_name` which are all strings.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_99c234b8-6fd8-42e2-b886-126070efa570",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_cc02fdae-8c41-4d18-a663-5ba8b62ec619",
+                        "method": "GET",
+                        "name": "api_v1_sport_livecategories",
+                        "route": "/api/v1/sport/{sport}/live-categories",
+                        "description": "Returns map which contains category id as key and number of live events in that category as value.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_018a40ed-9bdc-4bb1-849a-068d45a20b6a",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_f9e33918-2238-4b57-a671-0b60f8ae13fe",
+                        "method": "GET",
+                        "name": "api_v1_player_careerstatistics",
+                        "route": "/api/v1/player/{id}/career-statistics",
+                        "description": "Get player career statistics of different types.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_92188feb-eaf7-426c-9df5-01c149f5a7c4",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_7b97e496-471a-47b7-89a4-4145f508fd63",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_details",
+                        "route": "/api/v1/unique-tournament/{id}",
+                        "description": "Returns unique tournament details, an example `17`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_32706fc6-e2dd-48af-86d3-0009203e5582",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_719768f0-8883-47c0-bc1d-05a7076c66cf",
+                        "method": "GET",
+                        "name": "api_v1_team_events",
+                        "route": "/api/v1/team/{id}/events/{span}/{page}",
+                        "description": "Returns events in which team played.\nParameter span indicates whether future start dates are wanted or past start dates.\nAn example: `38`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_31de6d6e-9b34-4bc2-8067-b099855320f2",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_c4d5e42c-5bd6-4b10-91e6-ade11c60434c",
+                        "method": "GET",
+                        "name": "api_v1_team_details",
+                        "route": "/api/v1/team/{id}",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_4861f70d-7d02-43fc-a9fe-307a9fdda9a3",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_dfad9ce1-ff9f-4b5b-8215-bf4262f741d1",
+                        "method": "GET",
+                        "name": "api_v1_tournament_roundevents_3",
+                        "route": "/api/v1/tournament/{id}/season/{seasonId}/events/round/{round}/slug/{roundSlug}/{span}/0",
+                        "description": "Get events for tournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_b59a8dc9-5750-4aef-bf09-43a085346160",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_bec46960-66e2-4060-9df0-efe62075e091",
+                        "method": "GET",
+                        "name": "api_v1_event_featuredplayers",
+                        "route": "/api/v1/event/{id}/featured-players",
+                        "description": "Get featured players for teams participating in event.\n\nTo see return values go to sandbox tab and enter this id:\n\n- event: 7828244",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_711e3bad-20f5-4581-a267-03c5d51701ba",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_3018e75d-ae33-41a6-84bd-530b498c2a8d",
+                        "method": "GET",
+                        "name": "api_v1_event_bestplayers",
+                        "route": "/api/v1/event/{id}/best-players",
+                        "description": "Best players for each team in the event.\nExample ids divided per sport:\n\n - football: `7828036`\n - basketball: `7932054`\n - ice-hockey: `7863311`\n - handball: `7892350`\n - baseball: `8029999`\n - american-football: `8094790`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_f629a065-8750-4ab5-9b4c-3fdf32ce7750",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_7dea5395-5969-4a12-bfbb-c172aaa85e49",
+                        "method": "GET",
+                        "name": "api_v1_event_informplayers",
+                        "route": "/api/v1/event/{id}/in-form-players",
+                        "description": "Get in form players based on previous 5 matches in current tournament season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_93a19e38-3c53-4df4-8d93-5edaaf0e9d73",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_dee1dcf4-3c04-4b98-a8aa-c3cf38472a2d",
+                        "method": "GET",
+                        "name": "api_v1_sport_scheduledinverse",
+                        "route": "/api/v1/sport/{sport}/scheduled-events/{date}/inverse",
+                        "description": "Return scheduled events for given sport and date",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_45c23f2b-c90c-449e-97db-9e4d87e2e36e",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_bc9f8461-3b82-49ab-a951-eb06d5fe36fe",
+                        "method": "GET",
+                        "name": "api_v1_sport_categories",
+                        "route": "/api/v1/sport/{sport}/categories",
+                        "description": "Returns the categories of a sport. An example: `football`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_0f4093b4-594a-48d5-b08e-ccf06f400892",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_e5734bbe-6506-4fde-bf43-203d29adfc45",
+                        "method": "GET",
+                        "name": "api_v1_search_defaultsuggestions",
+                        "route": "/api/v1/search/suggestions/default",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_64ed94b9-4cbb-4bb7-9adf-8f784cf4e48d",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_dbc1eebc-9f48-46ce-abe3-4e45fdd1b75d",
+                        "method": "GET",
+                        "name": "api_v1_event_media",
+                        "route": "/api/v1/event/{id}/media",
+                        "description": "Returns media and highlights of an event. An example: `7836705`",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_46ada58e-1bb3-4feb-84a4-9440bcd89eae",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_e356bc0f-7dd1-44ec-ae73-e6fc1c44b377",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_seasontournaments",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/tournaments",
+                        "description": "Get tournaments in given unique tournament that are present in given season",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_2b1f3e24-1726-4655-8241-9c7bf70a5d3b",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_0ade8ee2-bf84-42e8-9d1b-ed8b67e93926",
+                        "method": "GET",
+                        "name": "api_v1_team_careerstatistics",
+                        "route": "/api/v1/team/{id}/career-statistics",
+                        "description": " ",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_ff0132d9-12c0-49a2-bc78-b77f70aac3d0",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_3e3ea833-0c6e-4936-a5bb-af691fe55b04",
+                        "method": "GET",
+                        "name": "api_v1_uniquetournament_roundevents_1",
+                        "route": "/api/v1/unique-tournament/{id}/season/{seasonId}/events/round/{round}/{span}/0",
+                        "description": "Get events for uniqueTournament, season and round.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    },
+                    {
+                      "id": "billingitemendpoint_1227f477-f097-4501-8038-498c21d89335",
+                      "endpoint": "deprecated",
+                      "apiEndpoint": {
+                        "id": "apiendpoint_77a198f0-6357-4acf-92a2-cb68601ff802",
+                        "method": "GET",
+                        "name": "get_sofa_app_api_v1_tournament_seasonevents_1",
+                        "route": "/api/v1/tournament/{id}/season/{seasonId}/events/{span}/{page}",
+                        "description": "Get events for tournament and season.",
+                        "__typename": "BillingItemApiEndpoint"
+                      },
+                      "__typename": "BillingItemEndpoint"
+                    }
+                  ],
+                  "__typename": "BillingItem"
+                },
+                "item": "billingitem_ba60b571-1e47-42c2-9e54-008aed3ccb7b",
+                "limitType": "hard",
+                "__typename": "BillingLimit"
+              }
+            ],
+            "enablebillingfeatures": [],
+            "rateLimit": {
+              "enabled": false,
+              "unit": 60,
+              "unitName": "minute",
+              "amount": 250,
+              "__typename": "RateLimit"
+            }
+          },
+          "__typename": "BillingSubscription"
+        }
+      ],
+      "parents": [
+        {
+          "id": "9080524",
+          "type": "Team",
+          "subscriptions": [],
+          "__typename": "Entity"
+        }
+      ],
+      "__typename": "Entity"
+    }
+  }
+}

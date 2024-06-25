@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <style>
+      /* Inline CSS */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        background-color: #f2f2f2;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      .content {
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .otp {
+        font-size: 24px;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div style="display: none">
+      <span id="otpExpiresAt">{{otpExpiresAt}}</span>
+    </div>
+    <div class="container">
+      <div class="header">
+        <h1>OTP Verification</h1>
+      </div>
+      <div class="content">
+        <p>Your OTP for verification is:</p>
+        <table style="width: 100%">
+          <tr>
+            <td
+              style="
+                text-align: center;
+                font-size: 30px;
+                font-weight: bold;
+                padding: 20px;
+              "
+              id="otp"
+            >
+              {{otp}}
+            </td>
+          </tr>
+        </table>
+        <p id="timer">
+          This OTP will expire in <span id="countdown">00:00</span> minutes.
+        </p>
+      </div>
+      <div class="footer">
+        <p>
+          This OTP is valid for a limited time. Do not share it with anyone.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Countdown timer
+      const otpExpiresAt = document.getElementById("otpExpiresAt").innerText;
+      const countdownElement = document.getElementById("countdown");
+
+      const countdownInterval = setInterval(() => {
+        const expiresAtDate = new Date(otpExpiresAt);
+        const nowDate = new Date();
+
+        const timeDifference = expiresAtDate - nowDate;
+
+        // Check if time has expired
+        if (!isNaN(timeDifference) && timeDifference <= 0) {
+          clearInterval(countdownInterval);
+          countdownElement.innerText = "00:00";
+        } else if (!isNaN(timeDifference)) {
+          const minutes = Math.floor(timeDifference / 60000);
+          const seconds = Math.floor((timeDifference % 60000) / 1000);
+
+          const formattedMinutes = minutes.toString().padStart(2, "0");
+          const formattedSeconds = seconds.toString().padStart(2, "0");
+          countdownElement.innerText = `${formattedMinutes}:${formattedSeconds}`;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
