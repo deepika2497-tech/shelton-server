@@ -6,21 +6,21 @@ import cacheTTL from "../cache/constants.js";
 
 const getCategories = async (req, res, next) => {
   try {
-    const { sport } = req.params;
+    // const { sport } = req.params;
 
-    const key = cacheService.getCacheKey(req);
+    // const key = cacheService.getCacheKey(req);
 
-    let data = cacheService.getCache(key);
+    // let data = cacheService.getCache(key);
 
-    if (!data) {
-      data = await sportService.getCategories(sport);
+    // if (!data) {
+    //   data = await sportService.getCategories(sport);
 
-      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
-    }
+    //   cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+    // }
 
     return apiResponse({
       res,
-      data: data,
+      data: [{"name": "test"}],
       status: true,
       message: "Tournament leagues fetched successfully",
       statusCode: StatusCodes.OK,
