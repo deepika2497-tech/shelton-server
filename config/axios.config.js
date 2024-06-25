@@ -6,6 +6,10 @@ let headers = {};
 
 if ((config.sofascore.apiMode = "free")) {
   apiUrl = config.sofascore.freeUrl;
+  headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  };
 } else {
   apiUrl = config.sofascore.paidUrl;
 
@@ -14,8 +18,6 @@ if ((config.sofascore.apiMode = "free")) {
     "X-RapidAPI-Host": "sportapi7.p.rapidapi.com",
   };
 }
-
-console.log("headers", headers)
 
 const axiosInstance = axios.create({
   baseURL: apiUrl,
