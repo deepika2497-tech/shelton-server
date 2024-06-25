@@ -10,30 +10,35 @@ const getAllTournamentsByCategory = async (req, res, next) => {
     const { id } = req.params;
     console.log("id...", id);
 
-    const key = cacheService.getCacheKey(req);
+    // const key = cacheService.getCacheKey(req);
 
-    let data = cacheService.getCache(key);
-    console.log("data from cache", data);
+    // let data = cacheService.getCache(key);
+    // console.log("data from cache", data);
 
-    if (!data) {
+    // if (!data) {
       const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       };
-      console.log("Request headers:", headers);
+    //   console.log("Request headers:", headers);
 
-      data = await categoryService.getAllTournamentsByCategory(id, headers);
-      console.log("data from service", data);
+    //   data = await categoryService.getAllTournamentsByCategory(id, headers);
+    //   console.log("data from service", data);
 
-      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
-    }
+    //   cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+    // }
 
-    const tournamentEntry = new Tournament({ data });
-    await tournamentEntry.save();
+    // const tournamentEntry = new Tournament({ data });
+    // await tournamentEntry.save();
+
+    const url = `https://www.sofascore.com/api/v1/category/${id}/unique-tournaments`;
+    const response = await axios.get(url, { headers });
+    console.log("response------------", response)
+    // return response.data;
 
     return apiResponse({
       res,
-      data: data,
+      data: response.data,
       status: true,
       message: "unique tournament by category fetched successfully",
       statusCode: StatusCodes.OK,
