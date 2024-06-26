@@ -4,16 +4,28 @@ import cacheService from "../cache/service.js";
 import sportService from "./service.js";
 import cacheTTL from "../cache/constants.js";
 import EventCount from "./models/eventCountSchema.js";
+import Category from "./models/categorySchema.js";
 
 const getCategories = async (req, res, next) => {
   try {
     const { sport } = req.params;
     const key = cacheService.getCacheKey(req);
     let data = cacheService.getCache(key);
-
     if (!data) {
-      data = await sportService.getCategories(sport);
-      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+      // Check if data exists in the database
+      const categoryEntry = await Category.findOne({ sport });
+
+      if (categoryEntry) {
+        data = categoryEntry.data;
+      } else {
+        // Fetch data from the API
+        data = await sportService.getCategories(sport);
+        cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+
+        // Store the fetched data in the database
+        const newCategoryEntry = new Category({ sport, data });
+        await newCategoryEntry.save();
+      }
     }
 
     return apiResponse({
@@ -36,6 +48,7 @@ const getCategories = async (req, res, next) => {
   }
 };
 
+
 const getDailyEventCount = async (req, res, next) => {
   try {
     const { timezoneOffset } = req.params;
@@ -50,9 +63,11 @@ const getDailyEventCount = async (req, res, next) => {
       if (eventCountEntry) {
         data = eventCountEntry.data;
       } else {
+        
         // Fetch data from the API
         data = await sportService.getDailyEventCount(timezoneOffset);
         cacheService.setCache(key, data, cacheTTL.TEN_SECONDS);
+
         // Store the fetched data in the database
         const newEventCountEntry = new EventCount({ data, timezoneOffset });
         await newEventCountEntry.save();
