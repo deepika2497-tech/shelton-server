@@ -63,7 +63,7 @@ const getDailyEventCount = async (req, res, next) => {
       if (eventCountEntry) {
         data = eventCountEntry.data;
       } else {
-        
+
         // Fetch data from the API
         data = await sportService.getDailyEventCount(timezoneOffset);
         cacheService.setCache(key, data, cacheTTL.TEN_SECONDS);
@@ -74,9 +74,18 @@ const getDailyEventCount = async (req, res, next) => {
       }
     }
 
+    let formattedData = Object.keys(data).map(key => {
+      return {
+          id: key,
+          name: key.charAt(0).toUpperCase() + key.slice(1).replace(/-/g, ' '),
+          live: data[key].live,
+          total: data[key].total
+      };
+  });
+
     return apiResponse({
       res,
-      data: data,
+      data: formattedData,
       status: true,
       message: "Event count fetched successfully",
       statusCode: StatusCodes.OK,

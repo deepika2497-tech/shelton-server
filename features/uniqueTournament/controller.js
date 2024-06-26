@@ -4,6 +4,7 @@ import cacheService from "../cache/service.js";
 import service from "./service.js";
 import cacheTTL from "../cache/constants.js";
 import Tournament from "./models/tournamentSchema.js";
+import Season from "./models/seasonsSchema.js";
 
 const getTournamentById = async (req, res, next) => {
   try {
@@ -50,13 +51,22 @@ const getSeasonsByTournament = async (req, res, next) => {
     const { id } = req.params;
 
     const key = cacheService.getCacheKey(req);
-
     let data = cacheService.getCache(key);
 
     if (!data) {
-      data = await service.getSeasonsByTournament(id);
+      // Check if data exists in the database
+      const season = await Season.findOne({ tournamentId: id });
+      if (season) {
+        data = season.data;
+      } else {
+        // Fetch data from the API
+        data = await service.getSeasonsByTournament(id);
+        cacheService.setCache(key, data, cacheTTL.ONE_DAY);
 
-      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+        // Store the fetched data in the database
+        const seasonEntry = new Season({ tournamentId: id, data });
+        await seasonEntry.save();
+      }
     }
 
     return apiResponse({
@@ -67,7 +77,12 @@ const getSeasonsByTournament = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    next(error);
+    return apiResponse({
+      res,
+      status: false,
+      message: "Error fetching seasons",
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
