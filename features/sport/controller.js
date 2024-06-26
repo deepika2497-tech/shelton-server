@@ -3,18 +3,16 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import sportService from "./service.js";
 import cacheTTL from "../cache/constants.js";
+import EventCount from "./models/eventCountSchema.js";
 
 const getCategories = async (req, res, next) => {
   try {
     const { sport } = req.params;
-
     const key = cacheService.getCacheKey(req);
-
     let data = cacheService.getCache(key);
 
     if (!data) {
       data = await sportService.getCategories(sport);
-
       cacheService.setCache(key, data, cacheTTL.ONE_DAY);
     }
 
@@ -47,18 +45,34 @@ const getDailyEventCount = async (req, res, next) => {
     let data = cacheService.getCache(key);
 
     if (!data) {
-      data = await sportService.getDailyEventCount(timezoneOffset);
-
-      cacheService.setCache(key, data, cacheTTL.TEN_SECONDS);
+      // Check if data exists in the database
+      const eventCountEntry = await EventCount.findOne({ timezoneOffset });
+      if (eventCountEntry) {
+        data = eventCountEntry.data;
+      } else {
+        // Fetch data from the API
+        data = await sportService.getDailyEventCount(timezoneOffset);
+        cacheService.setCache(key, data, cacheTTL.TEN_SECONDS);
+        // Store the fetched data in the database
+        const newEventCountEntry = new EventCount({ data, timezoneOffset });
+        await newEventCountEntry.save();
+      }
     }
 
     return apiResponse({
       res,
       data: data,
+      status: true,
+      message: "Event count fetched successfully",
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    next(error);
+    return apiResponse({
+      res,
+      status: false,
+      message: error.message,
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
