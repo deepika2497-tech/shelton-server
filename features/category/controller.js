@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import categoryService from "./service.js";
 import cacheTTL from "../cache/constants.js";
-import TournamentList from "./tournamentListSchema.js";
+import TournamentList from "./models/tournamentListSchema.js";
 
 const getAllTournamentsByCategory = async (req, res, next) => {
   try {

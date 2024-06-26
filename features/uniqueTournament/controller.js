@@ -3,19 +3,29 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import service from "./service.js";
 import cacheTTL from "../cache/constants.js";
+import Tournament from "./models/tournamentSchema.js";
 
 const getTournamentById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
     const key = cacheService.getCacheKey(req);
-
     let data = cacheService.getCache(key);
 
     if (!data) {
-      data = await service.getTournamentById(id);
+      // Check if data exists in the database
+      const tournament = await Tournament.findOne({ tournamentId: id });
+      if (tournament) {
+        data = tournament.data;
+      } else {
+        // Fetch data from the API
+        data = await service.getTournamentById(id);
+        cacheService.setCache(key, data, cacheTTL.ONE_DAY);
 
-      cacheService.setCache(key, data, cacheTTL.ONE_DAY);
+        // Store the fetched data in the database
+        const tournamentEntry = new Tournament({ tournamentId: id, data });
+        await tournamentEntry.save();
+      }
     }
 
     return apiResponse({
@@ -26,7 +36,12 @@ const getTournamentById = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    next(error);
+    return apiResponse({
+      res,
+      status: false,
+      message: "Error fetching unique tournament",
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+    });
   }
 };
 
