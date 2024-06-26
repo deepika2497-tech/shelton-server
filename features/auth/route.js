@@ -102,7 +102,7 @@ route.post(
 // ----------------
 
 // change password
-route.patch(
+route.post(
   "/change-password",
   upload.none(),
   verifyToken,
@@ -111,7 +111,7 @@ route.patch(
 );
 
 // reset password
-route.patch(
+route.post(
   "/reset-password",
   upload.none(),
   verifyToken,
