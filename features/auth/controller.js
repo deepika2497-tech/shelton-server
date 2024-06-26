@@ -724,8 +724,19 @@ const changePassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
   try {
-    const { password } = req.body;
-    const user = req.user;
+    const { email, password } = req.body;
+
+    // Find user by email
+    const user = await userService.findOne({ email });
+
+    if (!user) {
+      return apiResponse({
+        res,
+        statusCode: StatusCodes.NOT_FOUND,
+        status: false,
+        message: "User not found",
+      });
+    }
 
     const hashPassword = await bcrypt.hash(password, 10);
 
@@ -749,6 +760,7 @@ const resetPassword = async (req, res) => {
     });
   }
 };
+
 
 export default {
   registerByEmail,

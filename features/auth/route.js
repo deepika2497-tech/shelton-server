@@ -114,7 +114,6 @@ route.post(
 route.post(
   "/reset-password",
   upload.none(),
-  verifyToken,
   validate(authValidation.resetPassword),
   authController.resetPassword
 );

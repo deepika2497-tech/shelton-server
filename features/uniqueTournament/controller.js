@@ -191,36 +191,6 @@ const getSeasonStandingByTournament = async (req, res, next) => {
   }
 };
 
-// const getSeasonTopPlayersByTournament = async (req, res, next) => {
-//   try {
-//     const { id, seasonId, positionDetailed } = req.params;
-
-//     const key = cacheService.getCacheKey(req);
-
-//     let data = cacheService.getCache(key);
-
-//     if (!data) {
-//       data = await service.getSeasonTopPlayersByTournament(
-//         id,
-//         seasonId,
-//         positionDetailed
-//       );
-
-//       cacheService.setCache(key, data, cacheTTL.ONE_HOUR);
-//     }
-
-//     return apiResponse({
-//       res,
-//       data: data,
-//       status: true,
-//       message: "Season top players fetched successfully",
-//       statusCode: StatusCodes.OK,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
 const getSeasonTopPlayersByTournament = async (req, res, next) => {
   try {
     const { id, seasonId, positionDetailed } = req.params;
