@@ -475,9 +475,7 @@ const verifyEmailOTP = async (req, res) => {
       return apiResponse({
         res,
         statusCode: StatusCodes.BAD_REQUEST,
-        error: {
-          email: "Invalid OTP",
-        },
+        message: "Invalid OTP",
         status: false,
       });
     }

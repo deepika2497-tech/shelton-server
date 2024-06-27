@@ -267,7 +267,17 @@ const getSeasonMatchesByTournament = async (req, res, next) => {
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
-    next(error);
+    if (error.response && error.response.status === 404) {
+      return apiResponse({
+        res,
+        data: null,
+        status: true,
+        message: "No matches found",
+        statusCode: StatusCodes.OK,
+      });
+    } else {
+      next(error);
+    }
   }
 };
 
