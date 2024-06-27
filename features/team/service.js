@@ -29,9 +29,30 @@ const getTeamPLayers = async (params) => {
   return data ?? [];
 };
 
+const getTeamMatchesByTeam = async (id, span, page) => {
+  const { data } = await axiosInstance.get(
+    `/api/v1/team/${id}/events/${span}/${page}`
+  );
+
+  return data ?? [];
+};
+
+const getTeamPlayerStatisticsSeasons = async (id) => {
+  const { data } = await axiosInstance.get(`/api/v1/team/${id}/player-statistics/seasons`);
+  return data ?? [];
+};
+
+const getTeamMedia = async (id) => {
+  const { data } = await axiosInstance.get(`/api/v1/team/${id}/media`);
+  return data ?? [];
+};
+
 export default {
   getTeamPerformance,
   getTopPlayers,
   getTeamDetails,
   getTeamPLayers,
+  getTeamMatchesByTeam,
+  getTeamPlayerStatisticsSeasons,
+  getTeamMedia
 };
