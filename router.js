@@ -5,6 +5,7 @@ import uniqueTournamentRoute from "./features/uniqueTournament/route.js";
 import teamRoute from "./features/team/route.js";
 import settingRoute from "./features/setting/route.js";
 import tournamentRoute from "./features/tournament/route.js";
+import playerRoute from "./features/player/route.js";
 
 
 export default {
@@ -14,5 +15,6 @@ export default {
   uniqueTournamentRoute,
   teamRoute,
   settingRoute,
-  tournamentRoute
+  tournamentRoute,
+  playerRoute
 };

@@ -228,9 +228,19 @@ const getSeasonTopPlayersByTournament = async (req, res, next) => {
       }
     }
 
+    const transformedData = data.reduce((acc, item) => {
+      Object.keys(item).forEach(key => {
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(...item[key]);
+      });
+      return acc;
+    }, {});
+
     return apiResponse({
       res,
-      data: data,
+      data: transformedData,
       status: true,
       message: "Season top players fetched successfully",
       statusCode: StatusCodes.OK,
