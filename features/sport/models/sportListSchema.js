@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const EventCountSchema = new mongoose.Schema({
+const SportListSchema = new mongoose.Schema({
   data: {
     type: Object,
     required: true,
@@ -11,6 +11,6 @@ const EventCountSchema = new mongoose.Schema({
   },
 });
 
-const EventCount = mongoose.model('EventCount', EventCountSchema);
+const SportList = mongoose.model('SportList', SportListSchema);
 
-export default EventCount;
+export default SportList;

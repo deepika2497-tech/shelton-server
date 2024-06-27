@@ -6,7 +6,7 @@ const route = express.Router();
 // ----------------
 // GET routes
 // ----------------
-route.get("/:sport/categories", sportController.getCategories);
-route.get("/:timezoneOffset/event-count", sportController.getDailyEventCount);
+route.get("/:sport/categories", sportController.getCountryLeagueList);
+route.get("/:timezoneOffset/event-count", sportController.getSportList);
 
 export default route;

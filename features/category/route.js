@@ -8,7 +8,7 @@ const route = express.Router();
 // ----------------
 route.get(
   "/:id/unique-tournaments",
-  sportController.getAllTournamentsByCategory
+  sportController.getLeagueTournamentList
 );
 
 export default route;

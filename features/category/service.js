@@ -1,6 +1,6 @@
 import axiosInstance from "../../config/axios.config.js";
 
-const getAllTournamentsByCategory = async (id) => {
+const getLeagueTournamentList = async (id) => {
   const { data } = await axiosInstance.get(
     `/api/v1/category/${id}/unique-tournaments`
   );
@@ -9,5 +9,5 @@ const getAllTournamentsByCategory = async (id) => {
 };
 
 export default {
-  getAllTournamentsByCategory,
+  getLeagueTournamentList,
 };

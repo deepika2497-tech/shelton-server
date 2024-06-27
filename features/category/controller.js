@@ -3,9 +3,9 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import categoryService from "./service.js";
 import cacheTTL from "../cache/constants.js";
-import TournamentList from "./models/tournamentListSchema.js";
+import LeagueTournamentList from "./models/leagueTournamentListSchema.js";
 
-const getAllTournamentsByCategory = async (req, res, next) => {
+const getLeagueTournamentList = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -14,17 +14,17 @@ const getAllTournamentsByCategory = async (req, res, next) => {
 
     if (!data) {
        // Check if data exists in the database
-       const categoryTournament = await TournamentList.findOne({ categoryId: id });
-       if (categoryTournament) {
-        data = categoryTournament.data;
+       const leagueTournamentList = await LeagueTournamentList.findOne({ categoryId: id });
+       if (leagueTournamentList) {
+        data = leagueTournamentList.data;
       } else {
          // Fetch data from the API
-        data = await categoryService.getAllTournamentsByCategory(id);
+        data = await categoryService.getLeagueTournamentList(id);
         cacheService.setCache(key, data, cacheTTL.ONE_DAY);
 
         // Store the fetched data in the database
-        const tournamentEntry = new TournamentList({ categoryId: id, data });
-        await tournamentEntry.save();
+        const leagueTournamentEntry = new LeagueTournamentList({ categoryId: id, data });
+        await leagueTournamentEntry.save();
       }
     }
 
@@ -32,7 +32,7 @@ const getAllTournamentsByCategory = async (req, res, next) => {
       res,
       data: data,
       status: true,
-      message: "unique tournament by category fetched successfully",
+      message: "league tournament list fetched successfully",
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
@@ -41,5 +41,5 @@ const getAllTournamentsByCategory = async (req, res, next) => {
 };
 
 export default {
-  getAllTournamentsByCategory,
+  getLeagueTournamentList,
 };
