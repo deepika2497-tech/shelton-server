@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const { Schema } = mongoose;
 
-const TournamentListSchema = new Schema({
+const LeagueTournamentListSchema = new Schema({
   categoryId: {
     type: String,
     required: true
@@ -15,6 +15,6 @@ const TournamentListSchema = new Schema({
   timestamps: true
 });
 
-const TournamentList = mongoose.model('TournamentList', TournamentListSchema);
+const LeagueTournamentList = mongoose.model('LeagueTournamentList', LeagueTournamentListSchema);
 
-export default TournamentList;
+export default LeagueTournamentList;

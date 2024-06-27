@@ -3,28 +3,28 @@ import { StatusCodes } from "http-status-codes";
 import cacheService from "../cache/service.js";
 import sportService from "./service.js";
 import cacheTTL from "../cache/constants.js";
-import EventCount from "./models/eventCountSchema.js";
-import Category from "./models/categorySchema.js";
+import SportList from "./models/sportListSchema.js";
+import CountryLeagueList from "./models/countryLeagueListSchema.js";
 
-const getCategories = async (req, res, next) => {
+const getCountryLeagueList = async (req, res, next) => {
   try {
     const { sport } = req.params;
     const key = cacheService.getCacheKey(req);
     let data = cacheService.getCache(key);
     if (!data) {
       // Check if data exists in the database
-      const categoryEntry = await Category.findOne({ sport });
+      const countryLeagueListEntry = await CountryLeagueList.findOne({ sport });
 
-      if (categoryEntry) {
-        data = categoryEntry.data;
+      if (countryLeagueListEntry) {
+        data = countryLeagueListEntry.data;
       } else {
         // Fetch data from the API
-        data = await sportService.getCategories(sport);
+        data = await sportService.getCountryLeagueList(sport);
         cacheService.setCache(key, data, cacheTTL.ONE_DAY);
 
         // Store the fetched data in the database
-        const newCategoryEntry = new Category({ sport, data });
-        await newCategoryEntry.save();
+        const newCountryLeagueListEntry = new CountryLeagueList({ sport, data });
+        await newCountryLeagueListEntry.save();
       }
     }
 
@@ -49,7 +49,7 @@ const getCategories = async (req, res, next) => {
 };
 
 
-const getDailyEventCount = async (req, res, next) => {
+const getSportList = async (req, res, next) => {
   try {
     const { timezoneOffset } = req.params;
 
@@ -59,18 +59,18 @@ const getDailyEventCount = async (req, res, next) => {
 
     if (!data) {
       // Check if data exists in the database
-      const eventCountEntry = await EventCount.findOne({ timezoneOffset });
-      if (eventCountEntry) {
-        data = eventCountEntry.data;
+      const sportListEntry = await SportList.findOne({ timezoneOffset });
+      if (sportListEntry) {
+        data = sportListEntry.data;
       } else {
 
         // Fetch data from the API
-        data = await sportService.getDailyEventCount(timezoneOffset);
+        data = await sportService.getSportList(timezoneOffset);
         cacheService.setCache(key, data, cacheTTL.TEN_SECONDS);
 
         // Store the fetched data in the database
-        const newEventCountEntry = new EventCount({ data, timezoneOffset });
-        await newEventCountEntry.save();
+        const newSportListEntry = new SportList({ data, timezoneOffset });
+        await newSportListEntry.save();
       }
     }
 
@@ -87,7 +87,7 @@ const getDailyEventCount = async (req, res, next) => {
       res,
       data: formattedData,
       status: true,
-      message: "Event count fetched successfully",
+      message: "Sport list fetched successfully",
       statusCode: StatusCodes.OK,
     });
   } catch (error) {
@@ -101,6 +101,6 @@ const getDailyEventCount = async (req, res, next) => {
 };
 
 export default {
-  getCategories,
-  getDailyEventCount,
+  getCountryLeagueList,
+  getSportList,
 };
